@@ -14,7 +14,7 @@ library(readxl)
 
 # path to Supp5 table
 # read XLSX and convert to data.table
-Supp5 <- "~/Data/Publications/Rosenberger_et_al_2018/aam8999_TableS5.xlsx"
+Supp5 <- "Data/Rosenberger_et_al_2018/aam8999_TableS5.xlsx"
 TPMs <- readxl::read_excel(Supp5)
 colnames(TPMs) <- TPMs[1,]
 TPMs <- TPMs[-1,]
@@ -22,7 +22,7 @@ colnames(TPMs)[1] <- "GeneSymbol"
 TPMs <- data.table::as.data.table(TPMs)
 
 # get list of histone genes
-histoneGenes <- data.table::fread("~/Data/References/Annotations/GeneSets/histoneGenes.txt")
+histoneGenes <- data.table::fread("Data/histoneGenes.txt")
 
 # get histone specific expression values [TPM +1 = transcript per million + 1 offset to avoid problems when log2 transforming]
 # first try to match gene names from histone table to gene names in TPM table
